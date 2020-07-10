@@ -31,5 +31,24 @@ The demo user is a regular user that signs up to the app to use the online store
 ## Project Screenshots
 
 ### Login
-![Screenshot](Login.png)
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/Login.PNG)
+
+### Store
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/Store.PNG)
+
+### Product
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/Product.PNG)
+
+### Cart Preview
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/StoreCart.PNG)
+
+
+### Cart
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/Cart.PNG)
+
+### Checkout
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/Checkout.PNG)
+
+### Order Confirmation
+![Screenshot](https://github.com/JimmyIsmael/CSharp-ASP.Net-MVC/blob/master/CigarStoreProject/OrderConfirmation.PNG)
 
