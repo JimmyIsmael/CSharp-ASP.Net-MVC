@@ -28,4 +28,8 @@ The demo user is a regular user that signs up to the app to use the online store
 * Revew orders.
 * Ship orders. 
 
+## Project Screenshots
+
+### Login
+![Screenshot](Login.png)
 
