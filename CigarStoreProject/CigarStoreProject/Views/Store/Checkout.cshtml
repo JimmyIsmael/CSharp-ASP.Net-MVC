@@ -1,0 +1,97 @@
+﻿@model CigarStoreProject.Models.StoreViewModel
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Checkout</h2>
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Shiping Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Shipping address</h3>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="Id" value="@ViewBag.Id" />
+                        <input class="input" type="text" name="first-name" value="@ViewBag.FirstName" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="last-name" value="@ViewBag.LastName" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email" name="email" value="@ViewBag.EmailAddress" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="address" value="@ViewBag.Address1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="city" value="@ViewBag.City" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="state" value="@ViewBag.City" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="country" value="@ViewBag.State" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="zip-code" value="@ViewBag.Zip" disabled>
+                    </div>
+                </div>
+                <!-- /Shiping Details -->
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Your Order</h3>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>PRODUCT</strong></div>
+                        <div><strong>TOTAL</strong></div>
+                    </div>
+                    <div class="order-products">
+                        @foreach (var item in Model.CartProducts)
+                        {
+                            <div class="order-col">
+                                <div>@Html.DisplayFor(modelItem => item.ProductQty)x @Html.DisplayFor(modelItem => item.ProductDescription)</div>
+                                <div>$@string.Format("{0:0,0.00}", item.ProductPrice)</div>
+                            </div>
+                        }
+                    </div>
+                    <div class="order-col">
+                        <div>Shiping</div>
+                        <div><strong>FREE</strong></div>
+                    </div>
+                    <div class="order-col">
+                        <div><strong>TOTAL</strong></div>
+                        <div><strong class="order-total">$@string.Format("{0:0,0.00}", @ViewBag.Total)</strong></div>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-1" checked="checked">
+                        <label for="payment-1">
+                            <span></span>
+                            Direct Bank Transfer
+                        </label>
+                        <div class="caption">
+                            <p>The transaction will take up to three business days to process</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn primary-btn" onclick="location.href='@Url.Action("PlaceOrcer", "Store")'" value="Place Order">Place Order</button>
+            </div>
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

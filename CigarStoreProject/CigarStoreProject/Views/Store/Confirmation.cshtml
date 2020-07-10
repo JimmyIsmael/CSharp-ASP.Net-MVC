@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Order Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thanks for placing the order @ViewBag.OrderNumber.</h2>
+<p><h4>Your order will be processed and shipped within one to two business days.</h4></p>
+<h5> Click here to see your order: @Html.ActionLink("Show Order", "ShowOrder", new { orderId = @ViewBag.OrderId })</h5>
+

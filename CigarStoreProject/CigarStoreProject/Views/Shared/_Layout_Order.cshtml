@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- TOP HEADER -->
+        <div id="top-header" class="hidden-xs">
+            <div class="container">
+                <ul class="header-links pull-left">
+                    <li><a href="#"><i class="fa fa-phone"></i> (904) 353-4311</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> support@swisher.com</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> 459 E 16th St, Jacksonville, FL 32206</a></li>
+                </ul>
+                <ul class="header-links pull-right">
+                    <li><a href="#"><i class="fa fa-user-o"></i>Hi @ViewBag.userName</a> </li>
+                    <li><a href="#"><i class="fa fa-cog"></i> My Account</a></li>
+                    @if (ViewBag.logged == true)
+                    {
+                        <li><i class="fa fa-sign-out"></i> @Html.ActionLink("Log out", "Logout", "Login")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <!-- /TOP HEADER -->
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="#" class="logo">
+                                <img src="~/Images/Swisher-Shield.png" alt="" width="130" height="70">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+                    <!-- SEARCH BAR -->
+                    @*<div class="col-md-6">
+                        <div class="header-search">
+                            @using (Html.BeginForm("SeachByDescription", "Store", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input class="input" placeholder="Search here" name="SearchValue">
+                                <button class="search-btn">Search</button>
+                            }
+                        </div>
+                    </div>*@
+                    <!-- /SEARCH BAR -->
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- Cart -->
+                            @*<div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Your Cart</span>
+                                    <div class="qty">@Model.CartProducts.Count</div>
+                                </a>
+                                <div class="cart-dropdown">
+                                    
+                                        @foreach (var item in Model.CartProducts)
+                                        {
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="@Url.Content(item.ProductImagePath)" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name">@Html.ActionLink(item.ProductDescription, "ShowProduct", new { productId = item.ProductId })</h3>
+                                                    <h4 class="product-price"><span class="qty">@Html.DisplayFor(modelItem => item.ProductQty)</span>x $@Html.DisplayFor(modelItem => item.ProductPrice)</h4>
+                                                </div>
+                                                <button class="delete" onclick="location.href='@Url.Action("DeleteProductFromCart", "Store", new { productId = item.ProductId })'"><i class="fa fa-close"></i></button>
+                                            </div>
+                                        }
+
+                                    <div class="cart-summary">
+                                        <small>@Model.CartProducts.Count Item(s) selected</small>
+                                        <h5>SUBTOTAL: $@string.Format("{0:0,0.00}", @ViewBag.Total)</h5>
+                                    </div>
+                                    <div class="cart-btns">
+                                        @Html.ActionLink("View Cart", "ViewCart")
+                                        @Html.ActionLink("Checkout", "Checkout")
+                                    </div>
+                                </div>
+                            </div>*@
+                            <!-- /Cart -->
+                            <!-- Admin Options -->
+                            @*@if (ViewBag.isAdmin == true)
+                            {
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-cog"></i>
+                                        <span>Administrators</span>
+                                    </a>
+                                    <div class="cart-dropdown">
+                                        <div class="cart-list">
+                                            <div class="product-body">
+                                                <h5 class="product-name">@Html.ActionLink("Users", "ViewUsers", "SignUp")</h5>
+                                                <h5 class="product-name">@Html.ActionLink("Products", "ListProducts", "Product")</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }*@
+
+                            <!-- /Admin Options -->
+                            <!-- Menu Toogle -->
+                            @*<div class="menu-toggle">
+                                <a href="#">
+                                    <i class="fa fa-bars"></i>
+                                    <span>Menu</span>
+                                </a>
+                            </div>*@
+                            <!-- /Menu Toogle -->
+                        </div>
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->
+    <!-- NAVIGATION -->
+    <nav id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li>@Html.ActionLink("Store", "Index", "Store")</li>
+                    <li>@Html.ActionLink("My Orders", "ListOrdersUser", "Store")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <!-- /NAV -->
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                @RenderBody()
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+    <!-- FOOTER -->
+    <footer id="footer" class="navbar-fixed-bottom">
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved.
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </footer>
+    <!-- /FOOTER -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

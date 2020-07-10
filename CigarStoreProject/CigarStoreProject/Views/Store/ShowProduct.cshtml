@@ -1,0 +1,89 @@
+﻿@model CigarStoreProject.Models.StoreViewModel
+
+@{
+    ViewBag.Title = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Details</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        @if (ViewBag.productAdded == true)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                Your product was added to the cart!
+                            </div>
+                        }
+                        @foreach (var item in Model.StoreProducts)
+                        {
+                            <!-- Product main img -->
+                            <div class="col-md-6">
+                                <div id="product-main-img">
+                                    <div class="product-preview">
+                                        <img src="@Url.Content(item.ImagePath)" height="350" width="350">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Product main img -->
+                            <!-- Product details -->
+                            <div class="col-md-6">
+                                <div class="product-details">
+                                    <h2 class="product-name">@Html.DisplayFor(modelItem => item.Description)</h2>
+                                    <div>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <a class="review-link" href="#">10 Review(s) | Add your review</a>
+                                    </div>
+                                    <div>
+                                        <h3 class="product-price">$@Html.DisplayFor(modelItem => item.Price)</h3>
+                                        <span class="product-available">In Stock</span>
+                                    </div>
+                                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                    @using (Html.BeginForm("AddProductToCart", "Store", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="add-to-cart">
+                                            <div class="qty-label">
+                                                Qty
+                                                <div class="input-number">
+                                                    <input type="number" name="productQty" required>
+                                                    <input type="hidden" name="productId" value="@Html.DisplayFor(modelItem => item.Id)" />
+                                                    <span class="qty-up">+</span>
+                                                    <span class="qty-down">-</span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                        </div>
+                                    }
+                                    <ul class="product-links">
+                                        <li>Share:</li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Product details -->
+                         }
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /SECTION -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[UserTable]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FirstName] NVARCHAR(50) NOT NULL,
+	[LastName] NVARCHAR(50) NOT NULL,
+	[CompanyName] NVARCHAR(100) NOT NULL,
+	[TaxID] NVARCHAR(9) NOT NULL,
+	[TobaccoLicense] NVARCHAR(50) NOT NULL,
+	[EmailAddress] NVARCHAR(100) NOT NULL,
+	[Password] NVARCHAR(50) NOT NULL,
+	[Address1] NVARCHAR(100) NOT NULL,
+	[Address2] NVARCHAR(100) NULL,
+	[City] NVARCHAR(100) NULL,
+	[State] NVARCHAR(50) NOT NULL,
+	[Zip] NVARCHAR(10) NOT NULL,
+	[IsActive] BIT NOT NULL, 
+    [IsAdmin] BIT NOT NULL,
+)

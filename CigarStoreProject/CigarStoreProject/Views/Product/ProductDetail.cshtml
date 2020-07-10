@@ -1,0 +1,79 @@
+﻿@model CigarStoreProject.Models.ProductModel
+
+@{
+    ViewBag.Title = "Product Detail";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="container">
+    <h2>Product Detail</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProductCode)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ProductCode)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UnitOfMeasure)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.UnitOfMeasure)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Category)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.IsActive)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <img src="@Url.Content(Model.ImagePath)"  class="center-block img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+
+    <p>
+        @Html.ActionLink("Edit", "EditProduct", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "ListProducts")
+    </p>
